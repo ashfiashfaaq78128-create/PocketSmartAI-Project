@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Home Planner{% endblock %}{% block content %}
+<section class="page-head"><p class="eyebrow">HOME INTERIOR</p><h1>Build a home plan</h1><p>Furniture, lighting and decor suggestions within your budget.</p></section>
+<form id="home-form" class="card planner-form" {% if multipart %}enctype="multipart/form-data"{% endif %}><div class="form-grid">
+<label>Budget (₹)<input type="number" name="budget" min="100" required></label><label>Rooms<input name="rooms" value="Living Room, Bedroom"></label><label>Style<select name="style"><option>Modern</option><option>Minimal</option><option>Traditional</option><option>Industrial</option></select></label><label>Notes<textarea name="notes"></textarea></label></div><button class="btn primary">Generate Plan</button><p id="planner-message" class="message"></p></form><div id="results"></div>
+{% endblock %}{% block scripts %}<script>setupPlannerForm("home-form","/api/generate-home")</script>{% endblock %}
